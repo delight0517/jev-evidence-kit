@@ -44,6 +44,8 @@ The sample is synthetic; its numbers are not a product benchmark. The exit code 
 
 [Open the synthetic paired-evaluation notebook in Google Colab](https://colab.research.google.com/github/delight0517/jev-evidence-kit/blob/main/examples/jev_colab_intro.ipynb). It uses standard Python only and shows why a cheaper but incorrect answer receives zero avoided-token credit. Colab runs code on Google's hosted runtime; do not enter private prompts, customer data, or secrets. For a local, offline workflow, use the CLI below.
 
+For a concise walkthrough of the quality gate and conservative accounting rule, see the [paired token accounting field guide](https://delight0517.github.io/jev-evidence-kit/guides/paired-token-accounting.html).
+
 ## Measure your own task
 
 1. Copy `examples/pair_template.json` and fill in one task's expected answer, both outputs, and token counts from provider usage records.

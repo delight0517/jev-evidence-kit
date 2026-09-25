@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101714">
+  <meta name="jev-analytics-endpoint" content="">
+  <meta name="description" content="A practical method for comparing local and hosted LLM runs: check the expected answer first, then count only observed ChatGPT tokens avoided.">
+  <link rel="canonical" href="https://delight0517.github.io/jev-evidence-kit/guides/paired-token-accounting.html">
+  <title>How to measure LLM token savings without counting bad answers — Jev Evidence Kit</title>
+  <style>
+    :root{color-scheme:dark;--bg:#101714;--panel:#17211d;--line:#2a3932;--text:#eef4ef;--muted:#a5b5aa;--mint:#b8f36a;font:17px/1.7 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text)}main,header,footer{width:min(820px,calc(100% - 36px));margin:auto}header{padding:22px 0;border-bottom:1px solid var(--line);font-size:14px}a{color:var(--mint)}main{padding:54px 0 70px}h1{font-size:clamp(38px,7vw,62px);line-height:1.04;letter-spacing:-.055em;margin:12px 0 20px}h2{font-size:24px;letter-spacing:-.03em;margin-top:42px}.eyebrow{color:var(--mint);font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.lede,.muted{color:var(--muted)}.callout{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px 20px;margin:24px 0}.formula{font:600 15px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.button{display:inline-block;background:var(--mint);color:#172116;border-radius:9px;padding:11px 15px;font-size:14px;font-weight:700;text-decoration:none}.secondary{border:1px solid var(--line);border-radius:9px;padding:10px 14px;text-decoration:none}li{margin:.55em 0}footer{border-top:1px solid var(--line);padding:18px 0 28px;color:var(--muted);font-size:13px}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header><a href="../">Jev Evidence Kit</a> / Field guide</header>
+  <main>
+    <div class="eyebrow">Paired evaluation · practical method</div>
+    <h1>Measure token savings only after the answer passes.</h1>
+    <p class="lede">A local run that uses fewer hosted-model tokens can still be a failed run. Compare both outputs with an independently chosen expected answer before you credit any avoided tokens.</p>
+
+    <section class="callout" aria-label="Accounting rule">
+      <strong>Conservative credit rule</strong>
+      <p class="formula">If both outputs match expected:<br>credited avoided tokens = max(0, baseline ChatGPT tokens − comparison ChatGPT tokens)<br>Otherwise: 0</p>
+      <p class="muted">Keep local-model tokens in a separate field. Do not subtract them from ChatGPT token counts or convert them to dollars without verified rates and billing records.</p>
+    </section>
+
+    <h2>1. Choose one task and its expected answer</h2>
+    <p>Write down the result the task requires before comparing runs. Use a short, deterministic example first, such as extracting a fixed list or returning a known status. If the expected answer is wrong or incomplete, the comparison is not meaningful.</p>
+
+    <h2>2. Record the two outputs and their usage receipts</h2>
+    <p>Save the hosted-model baseline and the local/alternate run. Copy input and output token counts from the provider's usage record. Record any ChatGPT calls used by the alternate workflow separately. Set that value to zero only when the usage record supports zero.</p>
+
+    <h2>3. Apply the same quality gate to both</h2>
+    <p>The Jev Evidence Kit's current checker uses exact text matching after trimming outer whitespace and normalizing Windows line endings. This is intentionally narrow: it does not judge semantic equivalence or general task quality. If either output fails the expected-answer check, credited avoided ChatGPT tokens are zero even when one run used fewer tokens.</p>
+
+    <div class="callout">
+      <strong>Synthetic example</strong>
+      <p>Baseline: 145 observed ChatGPT tokens. Alternate run: 12 observed ChatGPT tokens and 88 local tokens. If both answers match the expected result, the checker credits 133 avoided ChatGPT tokens and lists the 88 local tokens separately. If the alternate answer fails, the credit is zero.</p>
+      <p class="muted">These numbers illustrate the arithmetic only; they are not a benchmark or a cost-saving result.</p>
+    </div>
+
+    <h2>What this method cannot prove</h2>
+    <ul>
+      <li>It does not run either model, select a route, or intercept ChatGPT.</li>
+      <li>It does not verify invoices, provider billing, or monetary savings.</li>
+      <li>Exact string equality is not a substitute for expert review when meaning, safety, or completeness matter.</li>
+      <li>A single successful pair does not establish performance across a workload. Repeat the comparison on representative tasks and keep failed cases.</li>
+    </ul>
+
+    <p>The offline Python CLI reads a local JSON file and makes no network requests. The browser example also checks values locally. The optional site counter is separate and remains disabled until configured; neither the demo nor this guide sends prompt text, answers, or token values.</p>
+
+    <div class="actions">
+      <a class="button" data-jev-event="seo_guide_demo_click" href="https://delight0517.github.io/jev-evidence-kit/?utm_source=organic_search&amp;utm_medium=content&amp;utm_campaign=jev_evidence_2026q3&amp;utm_content=exp16_v1#demo">Try the synthetic browser example</a>
+      <a class="secondary" data-jev-event="seo_guide_download_click" href="https://github.com/delight0517/jev-evidence-kit/releases/download/v0.1.0/jev-evidence-kit-0.1.0.zip?utm_source=organic_search&amp;utm_medium=content&amp;utm_campaign=jev_evidence_2026q3&amp;utm_content=exp16_v1">Get the offline CLI</a>
+    </div>
+  </main>
+  <footer>Jev Evidence Kit 0.1.0 · MIT · <a href="https://github.com/delight0517/jev-evidence-kit">Source and limits</a> · <a href="../analytics.html">Privacy & measurement</a></footer>
+  <script src="../analytics.js"></script>
+</body>
+</html>
