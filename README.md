@@ -19,6 +19,17 @@ This is an evidence checker and worksheet, **not** an Aside installer or automat
 
 Aside/TypeSafe integration and buyer-machine compatibility have not been validated. This package does not install or modify system settings.
 
+## Install with pipx
+
+If you already use pipx, install the CLI in its own environment directly from this public repository:
+
+```sh
+pipx install "git+https://github.com/delight0517/jev-evidence-kit.git"
+jev-measure /path/to/your_pair.json
+```
+
+The command is named `jev-measure`. pipx needs Git and Python; see the [pipx installation guide](https://pipx.pypa.io/latest/how-to/install-pipx.html) if you do not have pipx yet. This installs the current default-branch source; clean-machine installation has not yet been verified. To remove it, run `pipx uninstall jev-evidence-kit`.
+
 ## Try the sample
 
 Open Terminal in the extracted folder and run:
