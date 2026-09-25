@@ -1,0 +1,16 @@
+{
+  "task": "Replace with a short task label",
+  "expected": "Replace with the verified expected answer",
+  "baseline": {
+    "output": "Paste the ChatGPT baseline answer",
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "jev": {
+    "output": "Paste the Jev arm answer",
+    "chatgpt_input_tokens": 0,
+    "chatgpt_output_tokens": 0,
+    "local_input_tokens": 0,
+    "local_output_tokens": 0
+  }
+}
