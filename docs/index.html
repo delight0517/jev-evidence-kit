@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Try a free, offline paired AI output checker. Compare quality first, then conservatively count observed ChatGPT tokens avoided.">
+  <meta name="theme-color" content="#101714">
+  <title>Jev Evidence Kit — Check before you count savings</title>
+  <style>
+    :root{color-scheme:dark;--bg:#101714;--panel:#17211d;--line:#2a3932;--text:#eef4ef;--muted:#a5b5aa;--mint:#b8f36a;--red:#ff9e91;font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 72% 0%,#1d2c24 0,transparent 42%),var(--bg);color:var(--text)}a{color:inherit}header,main,footer{width:min(1080px,calc(100% - 40px));margin:auto}header{height:84px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center;font-weight:650;letter-spacing:-.02em}.mark{width:32px;height:32px;border:1px solid #526548;border-radius:10px;display:grid;place-items:center;color:var(--mint);font-weight:800}.nav{display:flex;gap:22px;color:var(--muted);font-size:14px}.nav a{text-decoration:none}.nav a:hover{color:var(--text)}main{padding:68px 0 76px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);font-weight:700}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:end;margin-bottom:42px}.hero h1{font-size:clamp(42px,7vw,76px);line-height:.99;letter-spacing:-.065em;margin:18px 0}.hero p{max-width:610px;color:var(--muted);font-size:18px;margin:0}.proof{border:1px solid var(--line);border-radius:18px;background:#17211da8;padding:22px}.proof strong{display:block;font-size:24px;letter-spacing:-.04em}.proof span{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.box{border:1px solid var(--line);background:linear-gradient(145deg,#1a2620,#151d19);border-radius:16px;padding:20px;min-width:0}.box label{display:block;font-size:13px;color:var(--muted);margin-bottom:9px}.box h2{font-size:15px;margin:0 0 12px;font-weight:650}.box textarea{display:block;width:100%;min-height:106px;resize:vertical;border:1px solid #35463d;border-radius:10px;background:#101714;color:var(--text);padding:12px;font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;outline:none}.box textarea:focus,.box input:focus{border-color:var(--mint);box-shadow:0 0 0 3px #b8f36a1c}.tokens{display:flex;gap:10px;flex-wrap:wrap}.tokens label{flex:1;min-width:116px}.tokens input{width:100%;margin-top:6px;border:1px solid #35463d;border-radius:9px;background:#101714;color:var(--text);padding:10px;font:inherit}.actions{display:flex;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap}.button{border:0;border-radius:10px;background:var(--mint);color:#172116;font:700 14px/1.2 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:13px 18px;cursor:pointer;transition:transform .18s ease,filter .18s ease}.button:hover{transform:translateY(-2px);filter:brightness(1.04)}.quiet{color:var(--muted);font-size:13px}.result{margin-top:18px;min-height:88px;border:1px solid var(--line);border-radius:14px;background:#131c17;padding:18px}.result strong{display:block;font-size:19px;margin-bottom:4px}.result p{margin:0;color:var(--muted);font-size:14px}.result[data-state="error"]{border-color:#754c46}.result[data-state="error"] strong{color:var(--red)}.result[data-state="pass"] strong{color:var(--mint)}.footnote{max-width:740px;margin:26px 0 0;color:var(--muted);font-size:13px}.download{display:inline-flex;align-items:center;gap:7px;color:var(--mint);text-decoration:none;border-bottom:1px solid #668749;padding-bottom:2px}.download:hover{color:white}footer{padding:20px 0 32px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    @media(max-width:720px){header,main,footer{width:min(100% - 28px,560px)}header{height:68px}.nav{gap:12px;font-size:12px}.hero{grid-template-columns:1fr;gap:22px;margin-bottom:26px}.hero h1{font-size:54px}.proof{padding:17px}.grid{grid-template-columns:1fr}main{padding:44px 0 54px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="mark" aria-hidden="true">J</span> Jev Evidence Kit</div>
+    <nav class="nav" aria-label="Main navigation"><a href="#demo">Try the demo</a><a href="https://github.com/delight0517/jev-evidence-kit">Source</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div><div class="eyebrow">Free · Open source · Runs in your browser</div><h1>Check the answer<br>before the savings.</h1><p>Compare a baseline and a local result against an expected answer. Only credit observed ChatGPT tokens when both answers pass the same exact-match check.</p></div>
+      <aside class="proof"><strong>No upload. No router.</strong><span>This small demo runs on this page. It does not call AI providers or send your text anywhere.</span></aside>
+    </section>
+    <section id="demo" aria-labelledby="demo-title">
+      <div class="eyebrow">Synthetic example · Edit any field</div>
+      <h2 id="demo-title" style="font-size:26px;letter-spacing:-.04em;margin:8px 0 18px">Try one paired result</h2>
+      <div class="grid">
+        <div class="box"><label for="expected">Expected answer</label><textarea id="expected">The request succeeded.</textarea></div>
+        <div class="box"><label for="baseline">Baseline output</label><textarea id="baseline">The request succeeded.</textarea></div>
+        <div class="box"><label for="jev">Local / Jev output</label><textarea id="jev">The request succeeded.</textarea></div>
+        <div class="box"><h2>Observed token records</h2><div class="tokens">
+          <label>Baseline input<input id="base-in" type="number" min="0" step="1" value="120"></label>
+          <label>Baseline output<input id="base-out" type="number" min="0" step="1" value="30"></label>
+          <label>Jev ChatGPT input<input id="jev-chat-in" type="number" min="0" step="1" value="0"></label>
+          <label>Jev ChatGPT output<input id="jev-chat-out" type="number" min="0" step="1" value="0"></label>
+          <label>Jev local input<input id="local-in" type="number" min="0" step="1" value="35"></label>
+          <label>Jev local output<input id="local-out" type="number" min="0" step="1" value="10"></label>
+        </div></div>
+      </div>
+      <div class="actions"><button class="button" id="check">Check this pair</button><a class="download" href="https://github.com/delight0517/jev-evidence-kit/releases/download/v0.1.0/jev-evidence-kit-0.1.0.zip">Download the offline tool ↗</a><span class="quiet">No account or API key needed.</span></div>
+      <div class="result" id="result" data-state="pass" role="status" aria-live="polite"><strong>150 ChatGPT tokens avoided credited</strong><p>Both outputs match the expected answer. This is synthetic sample data, not a benchmark or cost claim.</p></div>
+      <p class="footnote">Exact match ignores leading and trailing whitespace and normalizes Windows line endings. It does not judge meaning, validate provider billing, or prove general task quality. The offline Python tool is the reproducible version; this browser demo is a quick illustration.</p>
+    </section>
+  </main>
+  <footer><span>Jev Evidence Kit 0.1.0 · MIT License</span><span><a href="https://github.com/delight0517/jev-evidence-kit">View source</a> · No analytics or external scripts on this page</span></footer>
+  <script>
+    const byId = id => document.getElementById(id);
+    const normalize = value => value.replace(/\r\n/g, "\n").trim();
+    function checkPair() {
+      const values = ["base-in", "base-out", "jev-chat-in", "jev-chat-out", "local-in", "local-out"].map(id => Number(byId(id).value));
+      const result = byId("result");
+      if (values.some(value => !Number.isSafeInteger(value) || value < 0)) {
+        result.dataset.state = "error";
+        result.innerHTML = "<strong>Enter valid token counts</strong><p>Counts must be non-negative whole numbers.</p>";
+        return;
+      }
+      const expected = normalize(byId("expected").value);
+      const basePass = normalize(byId("baseline").value) === expected;
+      const jevPass = normalize(byId("jev").value) === expected;
+      const credited = basePass && jevPass ? Math.max(0, values[0] + values[1] - values[2] - values[3]) : 0;
+      result.dataset.state = basePass && jevPass ? "pass" : "error";
+      result.innerHTML = `<strong>${credited.toLocaleString()} ChatGPT tokens avoided credited</strong><p>Baseline: ${basePass ? "exact match" : "does not match"}. Local / Jev: ${jevPass ? "exact match" : "does not match"}. ${basePass && jevPass ? "Credit counts observed ChatGPT tokens only." : "Both outputs must match the expected answer; otherwise credit is zero."}</p>`;
+    }
+    byId("check").addEventListener("click", checkPair);
+    checkPair();
+  </script>
+</body>
+</html>
