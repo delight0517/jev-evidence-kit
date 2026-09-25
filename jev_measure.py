@@ -63,11 +63,15 @@ def self_test():
 
 
 def main():
+    if sys.argv[1:] in (["-h"], ["--help"]):
+        print(f"usage: {Path(sys.argv[0]).name} <pair.json> | --self-test")
+        print("Compare baseline and Jev outputs against an expected answer.")
+        return 0
     if sys.argv[1:] == ["--self-test"]:
         self_test()
         return 0
     if len(sys.argv) != 2:
-        print("usage: python3 jev_measure.py <pair.json> | --self-test", file=sys.stderr)
+        print(f"usage: {Path(sys.argv[0]).name} <pair.json> | --self-test", file=sys.stderr)
         return 2
     try:
         report = measure(json.loads(Path(sys.argv[1]).read_text(encoding="utf-8")))

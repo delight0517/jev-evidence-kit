@@ -1,4 +1,4 @@
-# Jev Evidence Kit 0.1.0
+# Jev Evidence Kit 0.1.1
 
 Small offline tool for checking a paired task result before you claim token savings.
 
@@ -25,10 +25,11 @@ If you already use pipx, install the CLI in its own environment directly from th
 
 ```sh
 pipx install "git+https://github.com/delight0517/jev-evidence-kit.git"
+jev-measure --help
 jev-measure /path/to/your_pair.json
 ```
 
-The command is named `jev-measure`. pipx needs Git and Python; see the [pipx installation guide](https://pipx.pypa.io/latest/how-to/install-pipx.html) if you do not have pipx yet. This installs the current default-branch source; clean-machine installation has not yet been verified. To remove it, run `pipx uninstall jev-evidence-kit`.
+The command is named `jev-measure`. pipx needs Git and Python; see the [pipx installation guide](https://pipx.pypa.io/latest/how-to/install-pipx.html) if you do not have pipx yet. The Git-based pipx install and synthetic example were verified with Python 3.12.14 in an isolated environment; another machine's compatibility is not yet verified. To remove it, run `pipx uninstall jev-evidence-kit`.
 
 ## Try the sample
 
