@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101714">
+  <meta name="jev-analytics-endpoint" content="">
+  <title>Privacy & measurement — Jev Evidence Kit</title>
+  <style>
+    :root{color-scheme:dark;--bg:#101714;--panel:#17211d;--line:#2a3932;--text:#eef4ef;--muted:#a5b5aa;--mint:#b8f36a;font:16px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text)}main{width:min(760px,calc(100% - 36px));margin:64px auto}a{color:var(--mint)}h1{line-height:1.05;letter-spacing:-.04em;font-size:clamp(36px,7vw,58px)}h2{margin-top:34px;font-size:20px}.muted{color:var(--muted)}.state{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:20px}
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="./">← Jev Evidence Kit</a></p>
+    <h1>Privacy & measurement</h1>
+    <div class="state" id="analytics-state">Site analytics are currently off. The offline checker never sends your prompts, expected answers, outputs, token records, or API keys.</div>
+    <h2>What the optional site counter records</h2>
+    <p>If the site owner enables the configured GoatCounter endpoint, this page records aggregate visits, campaign source/name, demo-check clicks, release-download clicks, and team-pilot discussion clicks. The demo event contains no field contents or token counts. The checker itself remains offline.</p>
+    <p>GoatCounter's hosted service says it stores aggregate browser, operating-system, country, language, screen-width, page, and referrer counts. It processes the IP address and user-agent in memory to distinguish short sessions, but says it does not store those values or use browser cookies/local storage. The service's <a href="https://www.goatcounter.com/help/privacy">privacy details</a> describe its current handling. Visitors can block the optional counter with browser privacy tools.</p>
+    <h2>What is not measured</h2>
+    <p>A demo-check event means someone clicked the in-browser example. It does not prove they downloaded or ran the Python tool. First CLI use and seven-day repeat use are not centrally observable in this offline product. A discussion click is not a qualified lead. A purchase is counted only after a payment provider's captured order and refunds/fees are reconciled; this site does not collect payments.</p>
+    <h2>Current setup</h2>
+    <p id="analytics-setup">The analytics endpoint is blank in this release, so the tracking script and all analytics requests remain disabled. Campaign links use only aggregate UTM source/campaign data; arbitrary query strings are not stored as page paths.</p>
+    <p class="muted">Questions or team-pilot requests can be shared in the public <a href="https://github.com/delight0517/jev-evidence-kit/discussions">GitHub Discussions</a>. Do not post confidential prompts, customer data, or secrets.</p>
+  </main>
+  <script src="analytics.js"></script>
+</body>
+</html>

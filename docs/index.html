@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="w8QvOOYLB9WqaOBUUJWNa_FGoUSE4ihjZ9hqzZv2m10" />
+  <meta name="jev-analytics-endpoint" content="">
   <meta name="description" content="Try a free, offline paired AI output checker. Compare quality first, then conservatively count observed ChatGPT tokens avoided.">
   <meta name="theme-color" content="#101714">
   <title>Jev Evidence Kit — Check before you count savings</title>
@@ -40,12 +41,13 @@
           <label>Jev local output<input id="local-out" type="number" min="0" step="1" value="10"></label>
         </div></div>
       </div>
-      <div class="actions"><button class="button" id="check">Check this pair</button><a class="download" href="https://github.com/delight0517/jev-evidence-kit/releases/download/v0.1.0/jev-evidence-kit-0.1.0.zip">Download the offline tool ↗</a><span class="quiet">No account or API key needed.</span></div>
+      <div class="actions"><button class="button" id="check">Check this pair</button><a class="download" data-jev-event="download_click" href="https://github.com/delight0517/jev-evidence-kit/releases/download/v0.1.0/jev-evidence-kit-0.1.0.zip">Download the offline tool ↗</a><span class="quiet">No account or API key needed.</span></div>
       <div class="result" id="result" data-state="pass" role="status" aria-live="polite"><strong>150 ChatGPT tokens avoided credited</strong><p>Both outputs match the expected answer. This is synthetic sample data, not a benchmark or cost claim.</p></div>
       <p class="footnote">Exact match ignores leading and trailing whitespace and normalizes Windows line endings. It does not judge meaning, validate provider billing, or prove general task quality. The offline Python tool is the reproducible version; this browser demo is a quick illustration.</p>
+      <div class="actions"><a class="download" data-jev-event="team_pilot_interest" href="https://github.com/delight0517/jev-evidence-kit/discussions">Need help evaluating this with your team? Ask about a pilot ↗</a><span class="quiet">Share a use case, not private prompts, outputs, or API keys.</span></div>
     </section>
   </main>
-  <footer><span>Jev Evidence Kit 0.1.0 · MIT License</span><span><a href="https://github.com/delight0517/jev-evidence-kit">View source</a> · No analytics or external scripts on this page</span></footer>
+  <footer><span>Jev Evidence Kit 0.1.0 · MIT License</span><span><a href="https://github.com/delight0517/jev-evidence-kit">View source</a> · <a href="analytics.html">Privacy & measurement</a></span></footer>
   <script>
     const byId = id => document.getElementById(id);
     const normalize = value => value.replace(/\r\n/g, "\n").trim();
@@ -64,8 +66,9 @@
       result.dataset.state = basePass && jevPass ? "pass" : "error";
       result.innerHTML = `<strong>${credited.toLocaleString()} ChatGPT tokens avoided credited</strong><p>Baseline: ${basePass ? "exact match" : "does not match"}. Local / Jev: ${jevPass ? "exact match" : "does not match"}. ${basePass && jevPass ? "Credit counts observed ChatGPT tokens only." : "Both outputs must match the expected answer; otherwise credit is zero."}</p>`;
     }
-    byId("check").addEventListener("click", checkPair);
+    byId("check").addEventListener("click", () => { checkPair(); window.jevTrack?.("demo_check"); });
     checkPair();
   </script>
+  <script src="analytics.js"></script>
 </body>
 </html>

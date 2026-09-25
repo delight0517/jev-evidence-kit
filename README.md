@@ -38,6 +38,12 @@ The sample is synthetic; its numbers are not a product benchmark. The exit code 
 
 A failed answer gets zero avoided-token credit even if it uses fewer tokens. The checker does not validate provider billing or general task quality.
 
+## Public demo measurement
+
+The GitHub Pages demo includes an optional GoatCounter hook for aggregate page visits, demo checks, release-download clicks, team-pilot discussion clicks, and tagged campaigns. It is **disabled by default** until the owner configures a GoatCounter endpoint. The browser hook never sends prompts, answers, token counts, or API keys. See [Privacy & measurement](docs/analytics.html) for the event boundary and provider data handling.
+
+This does not measure whether someone ran the downloaded offline CLI or returned seven days later. The discussion CTA is an interest signal, not a qualified lead. Purchases are not accepted by the site; count revenue only after a payment provider confirms settlement and fees/refunds are reconciled.
+
 ## Self-check
 
 ```sh
